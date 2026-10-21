@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vida Felina</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#fff8f0;
+    color:#342820;
+    transition:0.3s;
+}
+
+body.oscuro{
+    background:#202020;
+    color:#ffffff;
+}
+
+header{
+    text-align:center;
+    padding:30px;
+}
+
+.controles{
+    margin-top:20px;
+}
+
+button{
+    padding:12px 18px;
+    margin:5px;
+    border:none;
+    border-radius:8px;
+    background:#a85d3b;
+    color:white;
+    cursor:pointer;
+}
+
+main{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.tarjetas{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.tarjeta{
+    border:1px solid #ddd;
+    padding:20px;
+    border-radius:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1 id="titulo">
+🐱 Vida Felina
+</h1>
+
+<p id="subtitulo">
+Cuidando a los gatos, construyendo comunidad
+</p>
+
+<div class="controles">
+
+<button id="tema">
+🌙 Modo oscuro
+</button>
+
+<button id="idioma">
+🇬🇧 English
+</button>
+
+</div>
+
+</header>
+
+<main>
+
+<section>
+
+<h2
+data-es="Un hogar para cada gato"
+data-en="A home for every cat">
+Un hogar para cada gato
+</h2>
+
+<p
+data-es="Promovemos el bienestar y la adopción responsable."
+data-en="We promote welfare and responsible adoption.">
+Promovemos el bienestar y la adopción responsable.
+</p>
+
+</section>
+
+<section>
+
+<h2
+data-es="Cuidados felinos"
+data-en="Cat care">
+Cuidados felinos
+</h2>
+
+<div class="tarjetas">
+
+<div class="tarjeta">
+
+<h3
+data-es="🥣 Alimentación"
+data-en="🥣 Nutrition">
+🥣 Alimentación
+</h3>
+
+<p
+data-es="Proporciona alimento y agua limpia."
+data-en="Provide food and fresh water.">
+Proporciona alimento y agua limpia.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h3
+data-es="🩺 Salud"
+data-en="🩺 Health">
+🩺 Salud
+</h3>
+
+<p
+data-es="Realiza visitas periódicas al veterinario."
+data-en="Schedule regular veterinary visits.">
+Realiza visitas periódicas al veterinario.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h3
+data-es="🏡 Adopción"
+data-en="🏡 Adoption">
+🏡 Adopción
+</h3>
+
+<p
+data-es="Ofrece un hogar seguro y responsable."
+data-en="Provide a safe and responsible home.">
+Ofrece un hogar seguro y responsable.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<script>
+const btnTema =
+document.getElementById("tema");
+
+btnTema.addEventListener("click", () => {
+
+    document.body.classList.toggle("oscuro");
+
+    if(document.body.classList.contains("oscuro")){
+
+        btnTema.textContent =
+        "☀️ Modo claro";
+
+    }else{
+
+        btnTema.textContent =
+        "🌙 Modo oscuro";
+    }
+
+});
+const btnIdioma =
+document.getElementById("idioma");
+
+let ingles = false;
+
+btnIdioma.addEventListener("click", () => {
+
+    ingles = !ingles;
+
+    document.documentElement.lang =
+    ingles ? "en" : "es";
+
+    document
+    .querySelectorAll("[data-es]")
+    .forEach(elemento => {
+
+        elemento.textContent =
+        ingles
+        ? elemento.dataset.en
+        : elemento.dataset.es;
+
+    });
+
+    document.getElementById("titulo").textContent =
+    ingles ? "🐱 Feline Life" : "🐱 Vida Felina";
+
+    document.getElementById("subtitulo").textContent =
+    ingles
+    ? "Caring for cats, building community"
+    : "Cuidando a los gatos, construyendo comunidad";
+
+    btnIdioma.textContent =
+    ingles
+    ? "🇪🇸 Español"
+    : "🇬🇧 English";
+
+});
+
+</script>
+
+</body>
+</html>
